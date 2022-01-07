@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:tugas_akhir/KnnModelAnalysis.dart';
+import 'package:tugas_akhir/KnnModelPerformance.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,7 +10,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //PostAnalysis? postAnalysis;
+  PostPerformance? postPerformance;
   String dropdownValue = 'Exp Lane';
+  String data = "Kosong";
+
+  // static postKnn() async {
+  //   try {
+  //     var response = await http
+  //         .post(Uri.parse("http://127.0.0.1:8000/api/knnResult/"), body: {
+  //       "hero_damage": "12",
+  //       "damage_taken": "34",
+  //       "war_participation": "34",
+  //       "turret_damage": "11",
+  //       "role_id": "1",
+  //     });
+  //     print(response.body);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +228,13 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        PostPerformance.connectAPI("12", "11", "34", "11", "1")
+                            .then((value) {
+                          postPerformance = value;
+                          setState(() {});
+                        });
+                      },
                       child: Text(
                         "Analyze",
                         style: TextStyle(color: Colors.black, fontSize: 18),
@@ -220,7 +247,9 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 30),
                       child: Text(
-                        "Performance Result",
+                        (postPerformance != null)
+                            ? postPerformance!.performance
+                            : "...",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -228,12 +257,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      "Analysis Result",
+                      "...",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                       ),
-                    )
+                    ),
                   ],
                 )
               ],
