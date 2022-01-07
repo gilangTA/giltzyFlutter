@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class PostPerformance {
+class ModelKnn {
   String performance;
+  String analysis;
 
-  PostPerformance({required this.performance});
+  ModelKnn({
+    required this.performance,
+    required this.analysis,
+  });
 
-  static Future<PostPerformance> connectAPI(
+  static Future<ModelKnn> connectAPI(
       String a, String b, String c, String d, String e) async {
     Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/knnResult/");
 
@@ -19,8 +23,9 @@ class PostPerformance {
     });
 
     var jsonObject = json.decode(apiResult.body);
-    return PostPerformance(
+    return ModelKnn(
       performance: jsonObject["performance"],
+      analysis: jsonObject["analysis"],
     );
   }
 }

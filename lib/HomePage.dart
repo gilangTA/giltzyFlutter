@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:tugas_akhir/KnnModelAnalysis.dart';
-import 'package:tugas_akhir/KnnModelPerformance.dart';
+import 'package:tugas_akhir/ModelKnn.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +10,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //PostAnalysis? postAnalysis;
-  PostPerformance? postPerformance;
+  //PostPerformance? postPerformance;
+  ModelKnn? modelKnn;
   String dropdownValue = 'Exp Lane';
   String data = "Kosong";
 
@@ -229,9 +229,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-                        PostPerformance.connectAPI("12", "11", "34", "11", "1")
+                        ModelKnn.connectAPI("12", "11", "34", "11", "1")
                             .then((value) {
-                          postPerformance = value;
+                          modelKnn = value;
                           setState(() {});
                         });
                       },
@@ -247,9 +247,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 30),
                       child: Text(
-                        (postPerformance != null)
-                            ? postPerformance!.performance
-                            : "...",
+                        (modelKnn != null) ? modelKnn!.performance : "...",
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -257,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      "...",
+                      (modelKnn != null) ? modelKnn!.analysis : "...",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
