@@ -9,27 +9,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //PostAnalysis? postAnalysis;
-  //PostPerformance? postPerformance;
   ModelKnn? modelKnn;
-  String dropdownValue = 'Exp Lane';
+  String dropdownValue = 'Select Role Hero';
   String data = "Kosong";
+  String? roleHero;
 
-  // static postKnn() async {
-  //   try {
-  //     var response = await http
-  //         .post(Uri.parse("http://127.0.0.1:8000/api/knnResult/"), body: {
-  //       "hero_damage": "12",
-  //       "damage_taken": "34",
-  //       "war_participation": "34",
-  //       "turret_damage": "11",
-  //       "role_id": "1",
-  //     });
-  //     print(response.body);
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  final heroDamageController = TextEditingController();
+  final turretDamageController = TextEditingController();
+  final warParticipationController = TextEditingController();
+  final damageTakenController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text(
                     "Input Battle Statistic",
                     style: TextStyle(
-                      fontSize: 36,
+                      fontSize: 27,
                       color: Colors.white,
                     ),
                   ),
@@ -63,116 +51,124 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Hero Damage",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               keyboardType: TextInputType.number,
+                              controller: heroDamageController,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 1),
+                                  borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                           Text(
                             "Damage Taken",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               keyboardType: TextInputType.number,
+                              controller: damageTakenController,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 1),
+                                  borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 58.5),
+                      padding: const EdgeInsets.only(left: 0),
                       child: Column(
                         children: [
                           Text(
                             "Turret Damage",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               keyboardType: TextInputType.number,
+                              controller: turretDamageController,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 1),
+                                  borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                           Text(
                             "War Participation",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               keyboardType: TextInputType.number,
+                              controller: warParticipationController,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 1),
+                                  borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ],
@@ -180,11 +176,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                Text(
-                  "Role Hero",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text(
+                    "Role Hero",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 DropdownButton<String>(
@@ -198,8 +197,20 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                       dropdownValue = newValue!;
                     });
+                    if (dropdownValue == "Exp Lane") {
+                      roleHero = "1";
+                    } else if (dropdownValue == "Gold Lane") {
+                      roleHero = "2";
+                    } else if (dropdownValue == "Mid Lane") {
+                      roleHero = "3";
+                    } else if (dropdownValue == "Jungler") {
+                      roleHero = "4";
+                    } else if (dropdownValue == "Roamer") {
+                      roleHero = "5";
+                    }
                   },
                   items: <String>[
+                    'Select Role Hero',
                     'Exp Lane',
                     'Gold Lane',
                     'Mid Lane',
@@ -229,8 +240,13 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-                        ModelKnn.connectAPI("12", "11", "34", "11", "1")
-                            .then((value) {
+                        ModelKnn.connectAPI(
+                          heroDamageController.text,
+                          damageTakenController.text,
+                          warParticipationController.text,
+                          turretDamageController.text,
+                          roleHero!,
+                        ).then((value) {
                           modelKnn = value;
                           setState(() {});
                         });
@@ -246,19 +262,62 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 30),
-                      child: Text(
-                        (modelKnn != null) ? modelKnn!.performance : "...",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Performance",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            width: 200.0,
+                            height: 40.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                (modelKnn != null)
+                                    ? modelKnn!.performance
+                                    : "...",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Text(
-                      (modelKnn != null) ? modelKnn!.analysis : "...",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 50),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Analysis",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            child: Text(
+                              (modelKnn != null) ? modelKnn!.analysis : "...",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
