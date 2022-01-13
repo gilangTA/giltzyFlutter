@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/HomePage.dart';
+import 'package:tugas_akhir/LoginPage.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -23,7 +23,7 @@ class Giltzy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

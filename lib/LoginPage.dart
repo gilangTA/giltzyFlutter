@@ -1,95 +1,186 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/HomePage.dart';
+import 'package:tugas_akhir/ModelLoginRegister.dart';
+import 'package:tugas_akhir/ProgressHUD.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+bool validateAndSave() {
+  final form = globalFormKey.currentState;
+  if (form!.validate()) {
+    form.save();
+    return true;
+  }
+  return false;
+}
+
+LoginRequestModel? loginRequestModel;
+GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+final scaffoldKey = GlobalKey<ScaffoldState>();
+bool isLoading = false;
+bool hidePassword = true;
+bool isApiCallProcess = false;
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+    loginRequestModel = new LoginRequestModel(username: '', password: '');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return ProgressHUD(
+      child: uiSetup(context),
+      inAsyncCall: isApiCallProcess,
+      opacity: 0.3,
+      //valueColor: Colors.white,
+    );
+  }
+
+  Widget uiSetup(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.black,
           body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 44),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                        fontSize: 60,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
+            child: Form(
+              key: globalFormKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 44),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 60,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
-                ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(44, 60, 44, 40),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          labelStyle: TextStyle(color: Colors.white),
-                          prefixIcon: Icon(
-                            Icons.person,
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(44, 60, 44, 40),
+                        child: TextFormField(
+                          onSaved: (input) =>
+                              loginRequestModel!.username = input!,
+                          style: TextStyle(
                             color: Colors.white,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 3),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(44, 0, 44, 0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          labelStyle: TextStyle(color: Colors.white),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 3),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(44, 60, 44, 0),
-                      child: SizedBox(
-                        width: 510,
-                        height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            onPrimary: Colors.black,
-                            shape: RoundedRectangleBorder(
+                          decoration: InputDecoration(
+                            labelText: "Username",
+                            labelStyle: TextStyle(color: Colors.white),
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 3),
                             ),
                           ),
-                          onPressed: () {},
-                          child: Text(
-                            "Login",
-                            style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(44, 0, 44, 0),
+                        child: TextFormField(
+                          onSaved: (input) =>
+                              loginRequestModel!.password = input!,
+                          obscureText: hidePassword,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            labelStyle: TextStyle(color: Colors.white),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.white,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white)),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 3),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(44, 60, 44, 0),
+                        child: SizedBox(
+                          width: 510,
+                          height: 50,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                              onPrimary: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onPressed: () {
+                              if (validateAndSave()) {
+                                setState(() {
+                                  isApiCallProcess = true;
+                                });
+
+                                APIService apiService = new APIService();
+                                apiService
+                                    .login(loginRequestModel!)
+                                    .then((value) {
+                                  setState(() {
+                                    isApiCallProcess = false;
+                                  });
+
+                                  if (value.token.isNotEmpty) {
+                                    const snackBar = SnackBar(
+                                      content: Text("Login Success"),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  } else {
+                                    const snackBar = SnackBar(
+                                      content: Text("Login Fail"),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  }
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomePage()));
+                                });
+                                print(loginRequestModel!.toJson());
+                              }
+                              setState(() {
+                                isLoading = true;
+                              });
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
