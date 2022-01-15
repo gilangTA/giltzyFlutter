@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/LoginPage.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -11,20 +12,21 @@ class RegisterPage extends StatelessWidget {
           backgroundColor: Colors.black,
           body: SingleChildScrollView(
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 44),
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          fontSize: 60,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                    ),
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 44, top: 150),
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
                   ),
-                  Column(children: [
+                ),
+                Column(
+                  children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(44, 60, 44, 0),
                       child: TextField(
@@ -110,15 +112,51 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )
-                  ]),
-                  Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Text(
-                      "Have an Account ? ",
-                      style: TextStyle(color: Colors.white),
                     ),
-                  ]),
-                ]),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 50),
+                  height: 50,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account ?",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 12),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

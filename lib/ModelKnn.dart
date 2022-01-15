@@ -12,7 +12,7 @@ class ModelKnn {
 
   static Future<ModelKnn> connectAPI(
       String a, String b, String c, String d, String e) async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/knnResult/");
+    Uri apiURL = Uri.parse("http://192.168.1.2:8000/api/knnResult/");
 
     var apiResult = await http.post(apiURL, body: {
       "hero_damage": a,
