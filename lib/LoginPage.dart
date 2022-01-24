@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tugas_akhir/HistoryPage.dart';
 import 'package:tugas_akhir/HomePage.dart';
 import 'package:tugas_akhir/ModelLoginRegister.dart';
-import 'package:tugas_akhir/ProgressHUD.dart';
+import 'package:tugas_akhir/ProgressHUDLogin.dart';
 import 'package:tugas_akhir/RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -133,12 +135,22 @@ class _LoginPageState extends State<LoginPage> {
                             });
 
                             APIService apiService = new APIService();
-                            apiService.login(loginRequestModel!).then((value) {
+                            apiService
+                                .login(loginRequestModel!)
+                                .then((value) async {
                               setState(() {
                                 isApiCallProcess = false;
                               });
 
                               if (value.token.isNotEmpty) {
+                                final preferences =
+                                    await SharedPreferences.getInstance();
+                                preferences.setString("token", value.token);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HistoryPage()));
                                 const snackBar = SnackBar(
                                   content: Text("Login Success"),
                                 );
@@ -151,10 +163,6 @@ class _LoginPageState extends State<LoginPage> {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
                               }
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
                             });
                             print(loginRequestModel!.toJson());
                           }
@@ -164,7 +172,10 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           "Login",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

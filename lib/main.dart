@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/RegisterPage.dart';
@@ -25,6 +24,10 @@ class Giltzy extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: LoginPage(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage()
+      },
     );
   }
 }

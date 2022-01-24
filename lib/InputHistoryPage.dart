@@ -47,11 +47,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                   width: 200,
                   height: 100,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(color: Colors.white, width: 1),
@@ -78,13 +81,15 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide:
@@ -105,17 +110,21 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 1),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                    width: 1,
+                                  ),
                                 ),
                               ),
                             ),
@@ -139,13 +148,15 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide:
@@ -166,13 +177,15 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide:
@@ -194,7 +207,10 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                   ),
                 ),
                 ListTile(
-                  title: Text("Win", style: TextStyle(color: Colors.white)),
+                  title: Text(
+                    "Win",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   leading: Radio<SingingCharacter>(
                     fillColor: MaterialStateColor.resolveWith(
                         (states) => Colors.white),
@@ -208,7 +224,10 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                   ),
                 ),
                 ListTile(
-                  title: Text("Lose", style: TextStyle(color: Colors.white)),
+                  title: Text(
+                    "Lose",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   leading: Radio<SingingCharacter>(
                     fillColor: MaterialStateColor.resolveWith(
                         (states) => Colors.white),
@@ -237,7 +256,11 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                       onPressed: () {},
                       child: Text(
                         "Add Battle",
-                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

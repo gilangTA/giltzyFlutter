@@ -234,13 +234,13 @@ class _HomePageState extends State<HomePage> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
-                        onPrimary: Colors.white,
+                        onPrimary: Colors.grey,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                       onPressed: () {
-                        ModelKnn.connectAPI(
+                        ModelKnn.postApiKnn(
                           heroDamageController.text,
                           damageTakenController.text,
                           warParticipationController.text,
@@ -253,7 +253,10 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Text(
                         "Analyze",
-                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
