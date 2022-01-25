@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:tugas_akhir/AboutPage.dart';
+import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/ModelProfile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -154,7 +156,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AboutPage(),
+                        ),
+                      );
+                    },
                     child: Row(
                       children: [
                         Padding(
@@ -225,7 +234,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     child: Row(
                       children: [
                         Padding(

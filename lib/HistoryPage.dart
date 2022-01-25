@@ -9,17 +9,37 @@ class HistoryPage extends StatefulWidget {
   _HistoryPageState createState() => _HistoryPageState();
 }
 
+// void count() {
+//   print("Gilang");
+//   for (var i = 0; i < modelHistory!.length; i++) {
+//     if (modelHistory![i].result == "Win") {
+//       sum = sum! + 1;
+//     }
+//   }
+//   winrate = sum! / 100;
+//   print(winrate);
+// }
+
+List<ModelHistory>? modelHistory;
+int? sum = 0;
+double? winrate;
+
 class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     ModelHistory.getApiHistory().then((value) {
       modelHistory = value;
       setState(() {});
+      for (var i = 0; i < modelHistory!.length; i++) {
+        if (modelHistory![i].result == "Win") {
+          sum = sum! + 1;
+        }
+      }
+      print(sum);
+      winrate = 100 / sum!;
     });
     super.initState();
   }
-
-  List<ModelHistory>? modelHistory;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +100,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                       ),
                       Text(
-                        "0.0 %",
+                        (winrate != null) ? winrate.toString() + " %" : "0.0 %",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
