@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/InputHistoryPage.dart';
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/RegisterPage.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/InputHistoryPage.dart';
 import 'package:tugas_akhir/ModelHistory.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -56,7 +57,13 @@ class _HistoryPageState extends State<HistoryPage> {
                           fontSize: 18,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const InputHistoryPage()));
+                      },
                     ),
                   ),
                 ),

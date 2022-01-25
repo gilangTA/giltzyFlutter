@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/HistoryPage.dart';
+import 'package:tugas_akhir/ModelHistory.dart';
 
 enum SingingCharacter { win, lose }
 
@@ -10,8 +12,16 @@ class InputHistoryPage extends StatefulWidget {
 }
 
 class _InputHistoryPageState extends State<InputHistoryPage> {
-  String dropdownValue = 'Exp Lane';
-  SingingCharacter? _character = SingingCharacter.win;
+  ModelHistory? modelHistory;
+  //SingingCharacter? _character = SingingCharacter.win;
+  String dropdownValue = 'Select Result';
+  String? roleHero;
+
+  final heroNameController = TextEditingController();
+  final heroDamageController = TextEditingController();
+  final turretDamageController = TextEditingController();
+  final warParticipationController = TextEditingController();
+  final damageTakenController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +57,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                   width: 200,
                   height: 100,
                   child: TextField(
+                    controller: heroNameController,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
@@ -81,6 +92,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              controller: heroDamageController,
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -110,6 +122,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              controller: damageTakenController,
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -148,6 +161,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              controller: turretDamageController,
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -177,6 +191,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                             width: 100,
                             height: 100,
                             child: TextField(
+                              controller: warParticipationController,
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -206,40 +221,68 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                     color: Colors.white,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    "Win",
-                    style: TextStyle(color: Colors.white),
+
+                DropdownButton<String>(
+                  dropdownColor: Colors.black,
+                  value: dropdownValue,
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
                   ),
-                  leading: Radio<SingingCharacter>(
-                    fillColor: MaterialStateColor.resolveWith(
-                        (states) => Colors.white),
-                    value: SingingCharacter.win,
-                    groupValue: _character,
-                    onChanged: (SingingCharacter? value) {
-                      setState(() {
-                        _character = value;
-                      });
-                    },
-                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                    });
+                  },
+                  items: <String>[
+                    'Select Result',
+                    'Win',
+                    'Lose',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    );
+                  }).toList(),
                 ),
-                ListTile(
-                  title: Text(
-                    "Lose",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  leading: Radio<SingingCharacter>(
-                    fillColor: MaterialStateColor.resolveWith(
-                        (states) => Colors.white),
-                    value: SingingCharacter.lose,
-                    groupValue: _character,
-                    onChanged: (SingingCharacter? value) {
-                      setState(() {
-                        _character = value;
-                      });
-                    },
-                  ),
-                ),
+
+                // ListTile(
+                //   title: Text(
+                //     "Win",
+                //     style: TextStyle(color: Colors.white),
+                //   ),
+                //   leading: Radio<SingingCharacter>(
+                //     fillColor: MaterialStateColor.resolveWith(
+                //         (states) => Colors.white),
+                //     value: SingingCharacter.win,
+                //     groupValue: _character,
+                //     onChanged: (SingingCharacter? value) {
+                //       setState(() {
+                //         _character = value;
+                //       });
+                //     },
+                //   ),
+                // ),
+                // ListTile(
+                //   title: Text(
+                //     "Lose",
+                //     style: TextStyle(color: Colors.white),
+                //   ),
+                //   leading: Radio<SingingCharacter>(
+                //     fillColor: MaterialStateColor.resolveWith(
+                //         (states) => Colors.white),
+                //     value: SingingCharacter.lose,
+                //     groupValue: _character,
+                //     onChanged: (SingingCharacter? value) {
+                //       setState(() {
+                //         _character = value;
+                //       });
+                //     },
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
                   child: SizedBox(
@@ -253,7 +296,22 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        ModelHistory.postApiHistory(
+                          heroNameController.text,
+                          heroDamageController.text,
+                          damageTakenController.text,
+                          warParticipationController.text,
+                          turretDamageController.text,
+                          dropdownValue,
+                        ).then((value) {
+                          modelHistory = value;
+                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HistoryPage()));
+                      },
                       child: Text(
                         "Add Battle",
                         style: TextStyle(

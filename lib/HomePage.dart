@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   ModelKnn? modelKnn;
   String dropdownValue = 'Select Role Hero';
-  String data = "Kosong";
   String? roleHero;
 
   final heroDamageController = TextEditingController();
