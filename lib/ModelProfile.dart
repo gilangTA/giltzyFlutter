@@ -18,7 +18,7 @@ class ModelProfile {
     );
   }
 
-  static Future<ModelProfile> getApiHistory() async {
+  static Future<ModelProfile> getApiProfile() async {
     Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/user/");
 
     final preferences = await SharedPreferences.getInstance();

@@ -9,20 +9,13 @@ class HistoryPage extends StatefulWidget {
   _HistoryPageState createState() => _HistoryPageState();
 }
 
-// void count() {
-//   print("Gilang");
-//   for (var i = 0; i < modelHistory!.length; i++) {
-//     if (modelHistory![i].result == "Win") {
-//       sum = sum! + 1;
-//     }
-//   }
-//   winrate = sum! / 100;
-//   print(winrate);
-// }
-
 List<ModelHistory>? modelHistory;
-int? sum = 0;
+int? sumWin = 0;
+int? sumWinDisplay = 0;
+int? sumLoseDisplay = 0;
+int? sumLose = 0;
 double? winrate;
+int? length = modelHistory!.length;
 
 class _HistoryPageState extends State<HistoryPage> {
   @override
@@ -30,13 +23,22 @@ class _HistoryPageState extends State<HistoryPage> {
     ModelHistory.getApiHistory().then((value) {
       modelHistory = value;
       setState(() {});
+
       for (var i = 0; i < modelHistory!.length; i++) {
         if (modelHistory![i].result == "Win") {
-          sum = sum! + 1;
+          sumWin = sumWin! + 1;
+        } else {
+          sumLose = sumLose! + 1;
         }
       }
-      print(sum);
-      winrate = 100 / sum!;
+
+      winrate = sumWin! / modelHistory!.length * 100;
+
+      sumWinDisplay = sumWin!;
+      sumLoseDisplay = sumLose!;
+
+      sumWin = 0;
+      sumLose = 0;
     });
     super.initState();
   }
@@ -88,7 +90,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -100,7 +102,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                       ),
                       Text(
-                        (winrate != null) ? winrate.toString() + " %" : "0.0 %",
+                        (winrate != 0) ? winrate.toString() + " %" : "0.0 %",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -110,8 +112,47 @@ class _HistoryPageState extends State<HistoryPage> {
                     ],
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Win : ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Text(
+                        (sumWinDisplay != 0) ? sumWinDisplay.toString() : "-",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Lose : ",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      (sumLoseDisplay != 0) ? sumLoseDisplay.toString() : "-",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 30),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
@@ -184,79 +225,81 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                       ],
                       rows: <DataRow>[
-                        for (var i = 0; i < modelHistory!.length; i++)
-                          DataRow(
-                            cells: <DataCell>[
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i].heroName
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i].heroDamage.toString()
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i].turretDamage.toString()
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i].damageTaken.toString()
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i]
-                                        .warParticipation
-                                        .toString()
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                              DataCell(Text(
-                                (modelHistory != null)
-                                    ? modelHistory![i].result
-                                    : "-",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              )),
-                            ],
-                          ),
+                        if (modelHistory != null) ...[
+                          for (var i = 0; i < modelHistory!.length; i++)
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i].heroName
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i].heroDamage.toString()
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i].turretDamage.toString()
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i].damageTaken.toString()
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i]
+                                          .warParticipation
+                                          .toString()
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                                DataCell(Text(
+                                  (modelHistory != null)
+                                      ? modelHistory![i].result
+                                      : "-",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                              ],
+                            ),
+                        ],
                       ],
                     ),
                   ),

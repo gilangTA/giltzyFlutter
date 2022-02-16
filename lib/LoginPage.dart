@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tugas_akhir/HistoryPage.dart';
-import 'package:tugas_akhir/HomePage.dart';
-import 'package:tugas_akhir/ModelLoginRegister.dart';
+import 'package:tugas_akhir/ModelLogin.dart';
 import 'package:tugas_akhir/ProgressHUDLogin.dart';
 import 'package:tugas_akhir/RegisterPage.dart';
+import 'package:tugas_akhir/Navbar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -149,8 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HistoryPage()));
+                                        builder: (context) => const Navbar()));
                                 const snackBar = SnackBar(
                                   content: Text("Login Success"),
                                 );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/HistoryPage.dart';
+
 import 'package:tugas_akhir/ModelHistory.dart';
+import 'package:tugas_akhir/ModelStatistic.dart';
+import 'package:tugas_akhir/Navbar.dart';
 
 enum SingingCharacter { win, lose }
 
@@ -13,9 +15,11 @@ class InputHistoryPage extends StatefulWidget {
 
 class _InputHistoryPageState extends State<InputHistoryPage> {
   ModelHistory? modelHistory;
+  ModelStatistic? modelStatistic;
+  double winrateInput = 0;
+  int? sumWinInput = 0;
   //SingingCharacter? _character = SingingCharacter.win;
   String dropdownValue = 'Select Result';
-  String? roleHero;
 
   final heroNameController = TextEditingController();
   final heroDamageController = TextEditingController();
@@ -307,10 +311,21 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                         ).then((value) {
                           modelHistory = value;
                         });
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HistoryPage()));
+
+                        // if (dropdownValue == "Win") {
+                        //   sumWinInput = sumWinInput! + 1;
+                        //   winrateInput = sumWinInput! / (length! + 1) * 100;
+                        // }
+
+                        // ModelStatistic.postApiStatistic(
+                        //   heroNameController.text,
+                        //   winrateInput.toString(),
+                        // ).then((value) {
+                        //   modelStatistic = value;
+                        // });
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Navbar()));
                       },
                       child: Text(
                         "Add Battle",

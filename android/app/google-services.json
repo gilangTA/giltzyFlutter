@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "290475481948",
+    "project_id": "chat-1fa13",
+    "storage_bucket": "chat-1fa13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290475481948:android:083403d15bea766a9f3f99",
+        "android_client_info": {
+          "package_name": "com.example.tugas_akhir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290475481948-p8bo66h1eolshlc8mnhqmc29kie6jrsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsHDv4fZgGcEgzts2H0YLNk8FuwRGtmOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290475481948-p8bo66h1eolshlc8mnhqmc29kie6jrsm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

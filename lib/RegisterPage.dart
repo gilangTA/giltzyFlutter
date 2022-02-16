@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir/LoginPage.dart';
+import 'package:tugas_akhir/ModelRegister.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  ModelRegister? modelRegister;
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +42,12 @@ class RegisterPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(44, 60, 44, 0),
                         child: TextField(
+                          controller: usernameController,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
-                            labelText: "Email",
+                            labelText: "Username",
                             labelStyle: TextStyle(color: Colors.white),
                             prefixIcon: Icon(
                               Icons.person,
@@ -53,6 +69,11 @@ class RegisterPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(44, 40, 44, 0),
                         child: TextField(
+                          controller: passwordController,
+                          obscureText: hidePassword,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
                             labelText: "Password",
                             labelStyle: TextStyle(color: Colors.white),
@@ -76,8 +97,12 @@ class RegisterPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(44, 40, 44, 0),
                         child: TextField(
+                          controller: emailController,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
-                            labelText: "Confirm Password",
+                            labelText: "Email",
                             labelStyle: TextStyle(color: Colors.white),
                             prefixIcon: Icon(Icons.lock, color: Colors.white),
                             focusedBorder: OutlineInputBorder(
@@ -105,7 +130,19 @@ class RegisterPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              ModelRegister.postApiHistory(
+                                usernameController.text,
+                                passwordController.text,
+                                emailController.text,
+                              ).then((value) {
+                                modelRegister = value;
+                              });
+                              Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()));
+                            },
                             child: Text(
                               "Sign Up",
                               style: TextStyle(
@@ -140,7 +177,10 @@ class RegisterPage extends StatelessWidget {
                             textStyle: const TextStyle(fontSize: 12),
                           ),
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/login');
+                            Navigator.pop(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
                           },
                           child: Text(
                             'Login',

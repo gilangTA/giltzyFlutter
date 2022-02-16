@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:tugas_akhir/AboutPage.dart';
 import 'package:tugas_akhir/LoginPage.dart';
+import 'package:tugas_akhir/ModelHistory.dart';
 import 'package:tugas_akhir/ModelProfile.dart';
+import 'package:tugas_akhir/StatisticPage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
-    ModelProfile.getApiHistory().then((value) {
+    ModelProfile.getApiProfile().then((value) {
       modelProfile = value;
       setState(() {});
     });
@@ -47,25 +49,27 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      (modelProfile != null) ? modelProfile!.username : "...",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black),
-                      textAlign: TextAlign.center,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Text(
-                        (modelProfile != null) ? modelProfile!.email : "...",
+                    if (modelProfile != null) ...[
+                      Text(
+                        (modelProfile != null) ? modelProfile!.username : "...",
                         style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                        ),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text(
+                          (modelProfile != null) ? modelProfile!.email : "...",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -84,7 +88,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StatisticPage()));
+                    },
                     child: Row(
                       children: [
                         Padding(
@@ -92,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             left: 20,
                             right: 20,
                           ),
-                          child: Icon(Icons.show_chart),
+                          child: Icon(Icons.bar_chart),
                         ),
                         Text(
                           "Statistic",
@@ -199,7 +208,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      ModelHistory.delApiHistory();
+                    },
                     child: Row(
                       children: [
                         Padding(
