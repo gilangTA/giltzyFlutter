@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +43,7 @@ class MessageDao {
 class _ChatPageState extends State<ChatPage> {
   @override
   // ignore: deprecated_member_use
-  final databaseRef = FirebaseDatabase.instance.reference();
+  //final databaseRef = FirebaseDatabase.instance.reference();
 
   final postTextController = TextEditingController();
   final messageDao = MessageDao();
@@ -68,13 +67,13 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(23, 26, 33, 1),
         appBar: AppBar(
           title: Text("GilTzy"),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 50, top: 30, right: 50),
+            padding: const EdgeInsets.all(30),
             child: Column(
               children: [
                 SizedBox(
@@ -112,46 +111,51 @@ class _ChatPageState extends State<ChatPage> {
                     },
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 300,
-                      child: TextField(
-                        controller: postTextController,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 55,
-                      width: 50,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.send,
-                          size: 40,
-                        ),
-                        color: Colors.white,
-                        onPressed: () {
-                          _sendMessage();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: TextField(
+                    controller: postTextController,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 55,
+                width: 50,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    size: 40,
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    _sendMessage();
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

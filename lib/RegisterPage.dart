@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           body: SingleChildScrollView(
             child: Form(
               child: Column(
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: InputDecoration(
                             labelText: "Email",
                             labelStyle: TextStyle(color: Colors.white),
-                            prefixIcon: Icon(Icons.lock, color: Colors.white),
+                            prefixIcon: Icon(Icons.mail, color: Colors.white),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
@@ -156,25 +156,25 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 30),
                     height: 50,
-                    color: Colors.white,
+                    //color: Color.fromRGBO(26, 42, 60, 1),
                     alignment: Alignment.center,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already have an account ?",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                         const SizedBox(
                           height: 30,
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                            textStyle: const TextStyle(fontSize: 12),
+                            textStyle: const TextStyle(
+                              fontSize: 18,
+                            ),
                           ),
                           onPressed: () {
                             Navigator.pop(
@@ -185,7 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Text(
                             'Login',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

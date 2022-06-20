@@ -33,22 +33,22 @@ class _NavbarState extends State<Navbar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
-            backgroundColor: Colors.black,
+            backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.note_add),
             label: "History",
-            backgroundColor: Colors.black,
+            backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
             label: "Chat",
-            backgroundColor: Colors.black,
+            backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
             label: "Profile",
-            backgroundColor: Colors.black,
+            backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           ),
         ],
         onTap: (index) {

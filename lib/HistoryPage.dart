@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tugas_akhir/InputHistoryPage.dart';
 import 'package:tugas_akhir/ModelHistory.dart';
 
@@ -48,14 +49,12 @@ class _HistoryPageState extends State<HistoryPage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           appBar: AppBar(
             title: Text("GilTzy"),
           ),
           body: SingleChildScrollView(
             child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
@@ -107,6 +106,18 @@ class _HistoryPageState extends State<HistoryPage> {
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: IconButton(
+                          onPressed: (() {
+                            Clipboard.setData(
+                                ClipboardData(text: winrate.toString()));
+                          }),
+                          icon: Icon(Icons.copy),
+                          color: Colors.white24,
+                          iconSize: 20,
                         ),
                       ),
                     ],

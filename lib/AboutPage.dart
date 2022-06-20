@@ -11,7 +11,7 @@ class AboutPage extends StatelessWidget {
           appBar: AppBar(
             title: Text("About"),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           body: Center(
             child: SingleChildScrollView(
               child: Column(

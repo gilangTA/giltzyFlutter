@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/ChatPage.dart';
 
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/RegisterPage.dart';
@@ -42,6 +41,7 @@ class _GiltzyState extends State<Giltzy> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Roboto'),
       home: LoginPage(),
       routes: {
         '/login': (context) => LoginPage(),

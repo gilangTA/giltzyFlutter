@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_akhir/ModelLogin.dart';
 import 'package:tugas_akhir/ProgressHUDLogin.dart';
@@ -49,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           body: SingleChildScrollView(
             child: Form(
               key: globalFormKey,
@@ -61,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       "Login",
                       textAlign: TextAlign.right,
-                      style: TextStyle(
+                      style: GoogleFonts.roboto(
                           fontSize: 60,
                           color: Colors.white,
                           fontWeight: FontWeight.w700),
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       decoration: InputDecoration(
                         labelText: "Username",
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelStyle: GoogleFonts.roboto(color: Colors.white),
                         prefixIcon: Icon(
                           Icons.person,
                           color: Colors.white,
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       decoration: InputDecoration(
                         labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelStyle: GoogleFonts.roboto(color: Colors.white),
                         prefixIcon: Icon(
                           Icons.lock,
                           color: Colors.white,
@@ -170,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           "Login",
-                          style: TextStyle(
+                          style: GoogleFonts.roboto(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
@@ -179,25 +180,25 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 50),
                     height: 50,
-                    color: Colors.white,
-                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(top: 30),
+                    // color: Color.fromRGBO(26, 42, 60, 1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Don't have an account ?",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
+                          style: GoogleFonts.roboto(
+                              color: Colors.white, fontSize: 18),
                         ),
                         const SizedBox(
                           height: 30,
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                            textStyle: const TextStyle(fontSize: 12),
+                            textStyle: const TextStyle(
+                              fontSize: 18,
+                            ),
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -209,8 +210,8 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text(
                             'Register',
-                            style: TextStyle(
-                              color: Colors.black,
+                            style: GoogleFonts.roboto(
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

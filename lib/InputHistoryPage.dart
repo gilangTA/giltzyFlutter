@@ -32,9 +32,9 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(23, 26, 33, 1),
           appBar: AppBar(
-            title: Text("GilTzy"),
+            title: Text("Input History"),
           ),
           body: SingleChildScrollView(
             child: Column(

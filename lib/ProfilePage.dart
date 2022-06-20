@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+
 import 'package:tugas_akhir/AboutPage.dart';
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/ModelHistory.dart';
@@ -34,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
         appBar: AppBar(
           title: Text("GilTzy"),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(23, 26, 33, 1),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -233,7 +232,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20, bottom: 20),
                 child: SizedBox(
                   width: 300,
                   height: 50,

@@ -18,7 +18,7 @@ class _InputStatisticState extends State<InputStatistic> {
 
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(23, 26, 33, 1),
         appBar: AppBar(
           title: Text("Input Statistic"),
         ),
