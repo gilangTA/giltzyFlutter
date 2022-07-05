@@ -31,7 +31,8 @@ class ModelHistory {
   }
 
   static Future<List<ModelHistory>> getApiHistory() async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/history/");
 
     final preferences = await SharedPreferences.getInstance();
     String token = preferences.getString("token")!;
@@ -58,7 +59,8 @@ class ModelHistory {
     String e,
     String f,
   ) async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/history/");
 
     final preferences = await SharedPreferences.getInstance();
     String token = preferences.getString("token")!;
@@ -89,7 +91,8 @@ class ModelHistory {
   }
 
   static Future delApiHistory() async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/history/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/history/");
 
     final preferences = await SharedPreferences.getInstance();
     String token = preferences.getString("token")!;

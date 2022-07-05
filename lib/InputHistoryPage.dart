@@ -52,14 +52,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                 Text(
                   "Hero's Name",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 12,
                     color: Colors.white,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10),
-                  width: 200,
-                  height: 100,
+                  width: 80,
+                  height: 80,
                   child: TextField(
                     controller: heroNameController,
                     textAlign: TextAlign.center,
@@ -87,14 +87,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                           Text(
                             "Hero Damage",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               controller: heroDamageController,
                               textAlign: TextAlign.center,
@@ -117,14 +117,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                           Text(
                             "Damage Taken",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               controller: damageTakenController,
                               textAlign: TextAlign.center,
@@ -150,20 +150,20 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 58.5),
+                      padding: const EdgeInsets.only(left: 0),
                       child: Column(
                         children: [
                           Text(
                             "Turret Damage",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               controller: turretDamageController,
                               textAlign: TextAlign.center,
@@ -186,14 +186,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                           Text(
                             "War Participation",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
                               color: Colors.white,
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 10),
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             child: TextField(
                               controller: warParticipationController,
                               textAlign: TextAlign.center,
@@ -218,11 +218,14 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                     ),
                   ],
                 ),
-                Text(
-                  "Result Battle",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text(
+                    "Result Battle",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
 
@@ -288,7 +291,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                 //   ),
                 // ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.only(top: 30, bottom: 50),
                   child: SizedBox(
                     width: 287,
                     height: 51,
@@ -331,7 +334,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                         "Add Battle",
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

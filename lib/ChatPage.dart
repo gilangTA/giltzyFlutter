@@ -45,7 +45,12 @@ class _ChatPageState extends State<ChatPage> {
   // ignore: deprecated_member_use
   //final databaseRef = FirebaseDatabase.instance.reference();
 
+  // ignore: override_on_non_overriding_member
   final postTextController = TextEditingController();
+  final inviteTextController = TextEditingController(text: '''Mode : 
+  Rank : 
+  Link Room : ''');
+
   final messageDao = MessageDao();
   ModelProfile? modelProfile;
 
@@ -64,6 +69,13 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
+  void _sendInvite() {
+    final message = Message(inviteTextController.text, modelProfile!.username);
+    messageDao.saveMessage(message);
+    postTextController.clear();
+    setState(() {});
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -73,12 +85,12 @@ class _ChatPageState extends State<ChatPage> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.only(left: 30),
             child: Column(
               children: [
                 SizedBox(
                   width: 800,
-                  height: 500,
+                  height: 400,
                   child: FirebaseAnimatedList(
                     query: messageDao.getMessageQuery(),
                     itemBuilder: (context, snapshot, animation, index) {
@@ -102,7 +114,7 @@ class _ChatPageState extends State<ChatPage> {
                             message.text,
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                               color: Colors.white,
                             ),
                           ),
@@ -115,25 +127,107 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: FloatingActionButton(
+            child: Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+            backgroundColor: Colors.white,
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: Text(
+                                "Make Team",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 200,
+                              height: 500,
+                              child: TextField(
+                                controller: inviteTextController,
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 1),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120,
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromARGB(255, 104, 104, 104),
+                                  onPrimary: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  _sendInvite();
+                                },
+                                child: Text(
+                                  "Send",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ]),
+                    );
+                  });
+            },
+          ),
+        ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(30),
+          padding:
+              const EdgeInsets.only(top: 50, right: 10, left: 10, bottom: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
+                  height: 40,
                   child: TextField(
                     controller: postTextController,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: Colors.white),
                       ),
                     ),

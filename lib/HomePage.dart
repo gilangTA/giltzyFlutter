@@ -176,42 +176,45 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 10.0),
+                //   child: Text(
+                //     "Hero's Name",
+                //     style: TextStyle(
+                //       fontSize: 12,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
+                // Container(
+                //   margin: const EdgeInsets.only(top: 10),
+                //   width: 200,
+                //   height: 100,
+                //   child: TextField(
+                //     controller: heroNameController,
+                //     textAlign: TextAlign.center,
+                //     decoration: InputDecoration(
+                //       fillColor: Colors.white,
+                //       filled: true,
+                //       focusedBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.white),
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       enabledBorder: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(10),
+                //         borderSide: BorderSide(color: Colors.white, width: 1),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    "Hero's Name",
+                    "Role Hero",
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.white,
                     ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  width: 200,
-                  height: 100,
-                  child: TextField(
-                    controller: heroNameController,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.white, width: 1),
-                      ),
-                    ),
-                  ),
-                ),
-                Text(
-                  "Role Hero",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
                   ),
                 ),
                 DropdownButton<String>(

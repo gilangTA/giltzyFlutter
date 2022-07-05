@@ -60,8 +60,8 @@ class _HistoryPageState extends State<HistoryPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 50),
                   child: SizedBox(
-                    width: 287,
-                    height: 51,
+                    width: 250,
+                    height: 45,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         alignment: Alignment.center,

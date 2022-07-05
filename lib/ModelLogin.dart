@@ -36,7 +36,8 @@ class LoginRequestModel {
 
 class APIService {
   Future<LoginResponseModel> login(LoginRequestModel requestModel) async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/token/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/token/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/token/");
 
     final response = await http.post(apiURL, body: requestModel.toJson());
     if (response.statusCode == 200) {

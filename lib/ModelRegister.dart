@@ -13,7 +13,8 @@ class ModelRegister {
     String password,
     String email,
   ) async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/registerUser/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/registerUser/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/registerUser/");
 
     var apiResult = await http.post(apiURL, body: {
       "username": username,

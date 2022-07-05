@@ -16,15 +16,17 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
+      name: 'Giltezy',
       options: FirebaseOptions(
-    apiKey: "XXX",
-    appId: "XXX",
-    messagingSenderId: "XXX",
-    projectId: "XXX",
-    databaseURL:
-        "https://chat-1fa13-default-rtdb.firebaseio.com/", // Realtime Database
-  ));
+        apiKey: "XXX",
+        appId: "XXX",
+        messagingSenderId: "XXX",
+        projectId: "XXX",
+        databaseURL:
+            "https://chat-1fa13-default-rtdb.firebaseio.com/", // Realtime Database
+      ));
 
   //HttpOverrides.global = new MyHttpOverrides();
   runApp(Giltzy());

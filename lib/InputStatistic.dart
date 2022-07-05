@@ -12,6 +12,7 @@ class InputStatistic extends StatefulWidget {
 class _InputStatisticState extends State<InputStatistic> {
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     ModelStatistic? modelStatistic;
     final heroNameController = TextEditingController();
     final winrateController = TextEditingController();
@@ -108,10 +109,10 @@ class _InputStatisticState extends State<InputStatistic> {
                         ).then((value) {
                           modelStatistic = value;
                         });
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => StatisticPage()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => StatisticPage()));
                       },
                       child: Text(
                         "Add Battle",

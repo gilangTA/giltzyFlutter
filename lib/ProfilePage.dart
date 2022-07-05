@@ -38,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 100),
+                margin: EdgeInsets.only(top: 50),
                 height: 140,
                 width: 300,
                 decoration: BoxDecoration(
@@ -74,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Container(
                 alignment: Alignment.center,
-                margin: const EdgeInsets.only(top: 100),
+                margin: const EdgeInsets.only(top: 50),
                 child: SizedBox(
                   width: 300,
                   height: 50,
@@ -88,10 +88,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => StatisticPage()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => StatisticPage()));
                     },
                     child: Row(
                       children: [
