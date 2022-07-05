@@ -19,7 +19,8 @@ class ModelStatistic {
   }
 
   static Future<List<ModelStatistic>> getApiStatistic() async {
-    Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/statistic/");
+    //Uri apiURL = Uri.parse("http://127.0.0.1:8000/api/statistic/");
+    Uri apiURL = Uri.parse("http://192.168.43.136:8000/api/statistic/");
 
     final preferences = await SharedPreferences.getInstance();
     String token = preferences.getString("token")!;

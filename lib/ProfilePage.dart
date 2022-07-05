@@ -4,7 +4,7 @@ import 'package:tugas_akhir/AboutPage.dart';
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/ModelHistory.dart';
 import 'package:tugas_akhir/ModelProfile.dart';
-import 'package:tugas_akhir/StatisticPage.dart';
+//import 'package:tugas_akhir/StatisticPage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

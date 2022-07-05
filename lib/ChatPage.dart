@@ -48,8 +48,8 @@ class _ChatPageState extends State<ChatPage> {
   // ignore: override_on_non_overriding_member
   final postTextController = TextEditingController();
   final inviteTextController = TextEditingController(text: '''Mode : 
-  Rank : 
-  Link Room : ''');
+  ,Tier : 
+  ,Link Room : ''');
 
   final messageDao = MessageDao();
   ModelProfile? modelProfile;
@@ -140,66 +140,83 @@ class _ChatPageState extends State<ChatPage> {
               showDialog(
                   context: context,
                   builder: (context) {
-                    return Dialog(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+                    return SingleChildScrollView(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Text(
-                                "Make Team",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 200,
-                              height: 500,
-                              child: TextField(
-                                controller: inviteTextController,
-                                textAlign: TextAlign.center,
-                                decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        color: Colors.grey, width: 1),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 120,
-                              height: 50,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color.fromARGB(255, 104, 104, 104),
-                                  onPrimary: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  _sendInvite();
-                                },
-                                child: Text(
-                                  "Send",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
+                            Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 60.0, bottom: 15),
+                                      child: Text(
+                                        "Make Team",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 200,
+                                      height: 150,
+                                      child: TextField(
+                                        controller: inviteTextController,
+                                        textAlign: TextAlign.center,
+                                        decoration: InputDecoration(
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            borderSide: BorderSide(
+                                                color: Colors.grey, width: 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20),
+                                      child: SizedBox(
+                                        width: 200,
+                                        height: 40,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary:
+                                                Color.fromARGB(255, 1, 17, 33),
+                                            onPrimary:
+                                                Color.fromARGB(255, 1, 17, 33),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            _sendInvite();
+                                          },
+                                          child: Text(
+                                            "Send",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
                             ),
                           ]),
                     );

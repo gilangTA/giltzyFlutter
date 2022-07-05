@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir/ModelStatistic.dart';
-import 'package:tugas_akhir/StatisticPage.dart';
+//import 'package:tugas_akhir/StatisticPage.dart';
 
 class InputStatistic extends StatefulWidget {
   const InputStatistic({Key? key}) : super(key: key);
