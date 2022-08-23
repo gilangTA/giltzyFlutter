@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ModelStatistic {
   String heroName;
-  double winrate;
+  String winrate;
 
   ModelStatistic({
     required this.heroName,

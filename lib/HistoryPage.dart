@@ -15,7 +15,7 @@ int? sumWin = 0;
 int? sumWinDisplay = 0;
 int? sumLoseDisplay = 0;
 int? sumLose = 0;
-double? winrate;
+double winrate = 0;
 int? length = modelHistory!.length;
 
 class _HistoryPageState extends State<HistoryPage> {
@@ -101,7 +101,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                       ),
                       Text(
-                        (winrate != 0) ? winrate.toString() + " %" : "0.0 %",
+                        (winrate.isNaN) ? "0 %" : winrate.toString() + " %",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,

@@ -58,7 +58,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10),
-                  width: 80,
+                  width: 200,
                   height: 80,
                   child: TextField(
                     controller: heroNameController,
@@ -327,7 +327,7 @@ class _InputHistoryPageState extends State<InputHistoryPage> {
                         //   modelStatistic = value;
                         // });
 
-                        Navigator.push(context,
+                        Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => Navbar()));
                       },
                       child: Text(

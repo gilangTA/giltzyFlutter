@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir/ModelStatistic.dart';
-import 'package:tugas_akhir/StatisticPage.dart';
+import 'package:tugas_akhir/ModelResetPassword.dart';
+import 'package:tugas_akhir/ProfilePage.dart';
 
 class InputStatistic extends StatefulWidget {
   const InputStatistic({Key? key}) : super(key: key);
@@ -13,15 +13,14 @@ class _InputStatisticState extends State<InputStatistic> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    ModelStatistic? modelStatistic;
-    final heroNameController = TextEditingController();
-    final winrateController = TextEditingController();
+    ModelResetPassword? modelProfile;
+    final newPassword = TextEditingController();
 
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(23, 26, 33, 1),
         appBar: AppBar(
-          title: Text("Input Statistic"),
+          title: Text("Reset Password"),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -30,40 +29,9 @@ class _InputStatisticState extends State<InputStatistic> {
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10, top: 50),
-                  child: Text(
-                    "Hero's Name",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  width: 300,
-                  height: 100,
-                  child: TextField(
-                    controller: heroNameController,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.white, width: 1),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
                   padding: const EdgeInsets.only(top: 40, bottom: 10),
                   child: Text(
-                    "Winrate (%)",
+                    "Input New Password",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -74,7 +42,7 @@ class _InputStatisticState extends State<InputStatistic> {
                   width: MediaQuery.of(context).size.width / 4,
                   height: 50,
                   child: TextField(
-                    controller: winrateController,
+                    controller: newPassword,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -105,19 +73,18 @@ class _InputStatisticState extends State<InputStatistic> {
                         ),
                       ),
                       onPressed: () {
-                        ModelStatistic.postApiStatistic(
-                          heroNameController.text,
-                          winrateController.text,
+                        ModelResetPassword.putApiProfile(
+                          newPassword.text,
                         ).then((value) {
-                          modelStatistic = value;
+                          modelProfile = value;
                         });
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => StatisticPage()));
+                                builder: (context) => ProfilePage()));
                       },
                       child: Text(
-                        "Add Battle",
+                        "Change Password",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,

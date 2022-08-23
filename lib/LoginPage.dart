@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                                 final preferences =
                                     await SharedPreferences.getInstance();
                                 preferences.setString("token", value.token);
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => const Navbar()));
@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                                     .showSnackBar(snackBar);
                               }
                             });
-                            print(loginRequestModel!.toJson());
+                            // print(loginRequestModel!.toJson());
                           }
                           setState(() {
                             isLoading = true;
@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           "Login",
                           style: GoogleFonts.roboto(
-                            fontSize: 25,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

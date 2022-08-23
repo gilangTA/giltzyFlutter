@@ -292,70 +292,65 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 30),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Performance",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 10),
-                            width: 200.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
-                            ),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                (modelKnn != null)
-                                    ? modelKnn!.performance
-                                    : "...",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 30, bottom: 30),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Performance",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 50),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Analysis",
+                      Container(
+                        margin: EdgeInsets.only(top: 10),
+                        width: 200.0,
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white,
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            (modelKnn != null) ? modelKnn!.performance : "...",
                             style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
+                              fontSize: 18,
+                              color: Colors.black,
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(top: 10),
-                            child: Text(
-                              (modelKnn != null) ? modelKnn!.analysis : "...",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
-                )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Analysis",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Text(
+                          (modelKnn != null) ? modelKnn!.analysis : "...",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

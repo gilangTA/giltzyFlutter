@@ -4,7 +4,7 @@ import 'package:tugas_akhir/AboutPage.dart';
 import 'package:tugas_akhir/LoginPage.dart';
 import 'package:tugas_akhir/ModelHistory.dart';
 import 'package:tugas_akhir/ModelProfile.dart';
-//import 'package:tugas_akhir/StatisticPage.dart';
+import 'package:tugas_akhir/StatisticPage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -88,10 +88,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => StatisticPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StatisticPage()));
                     },
                     child: Row(
                       children: [
@@ -220,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Icon(Icons.autorenew),
                         ),
                         Text(
-                          "Reset Statistic",
+                          "Reset History",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

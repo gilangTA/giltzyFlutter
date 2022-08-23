@@ -89,8 +89,8 @@ class _ChatPageState extends State<ChatPage> {
             child: Column(
               children: [
                 SizedBox(
-                  width: 800,
-                  height: 400,
+                  width: MediaQuery.of(context).size.height / 2.8,
+                  height: MediaQuery.of(context).size.height / 1.5,
                   child: FirebaseAnimatedList(
                     query: messageDao.getMessageQuery(),
                     itemBuilder: (context, snapshot, animation, index) {
@@ -129,7 +129,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: const EdgeInsets.only(right: 10, bottom: 80),
           child: FloatingActionButton(
             child: Icon(
               Icons.add,
@@ -226,7 +226,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         bottomNavigationBar: Padding(
           padding:
-              const EdgeInsets.only(top: 50, right: 10, left: 10, bottom: 10),
+              const EdgeInsets.only(top: 0, right: 10, left: 10, bottom: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
